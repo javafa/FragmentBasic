@@ -35,7 +35,8 @@ public class FragmentOne extends Fragment {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                // 메인액티비티의 함수를 호출해서 상세 fragment 로 position 값을 넘기면서 이동한다
+                MainActivity main = (MainActivity)getActivity();
+                main.onListFragmentInteraction(MainActivity.datas.get(position));
             }
         });
 
@@ -78,7 +79,7 @@ class CustomAdapter extends BaseAdapter {
         id.setText(position + "");
 
         TextView title = (TextView) convertView.findViewById(R.id.content);
-        title.setText(MainActivity.datas.get(position).title);
+        title.setText(MainActivity.datas.get(position).content);
 
         return convertView;
     }
